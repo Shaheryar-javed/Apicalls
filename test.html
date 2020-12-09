@@ -1,0 +1,101 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+	<head> 
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		 <style>
+			 #div {
+				 display: inline-flex;
+				 
+			 }
+			 #root {
+				width: 500px;
+				height: 400px;
+				background-color: lightgray;
+				/* border: 2px solid green; */
+				box-shadow: 5px 5px 5px #aaaaaa  ;
+				font-weight: bold;
+				font-size: 1.5rem;
+				margin: 2%
+			 }
+			 #root2{width: 500px;
+				height: 400px;
+				background-color: lightgray;
+				/* border: 2px solid green; */
+				box-shadow: 5px 5px 5px  #aaaaaa  ;
+				font-weight: bold;
+				font-size: 1.5rem;
+				margin: 2%;
+			 }
+			
+		 </style>
+		<title>Document</title> 
+	</head> 
+	<body> 
+
+		<div id='div'>
+		<div id="root" ></div>
+		
+		<div id="root2"></div>
+		
+	</div>
+
+	<div id="maindiv">
+	 <div id="centerdiv">
+	 
+	 </div>
+	</div>
+    
+<script>
+
+
+	fetch('https://api.covid19api.com/summary')
+	.then( (covid19api) => {
+            console.log(covid19api);
+			return covid19api.json();
+	})
+	.then((apidata) => {
+        console.log(apidata);
+		console.log(apidata.Countries[128])
+       
+		var pak = apidata.Countries[128]
+
+	  var pakcoviddata = `this is ${pak.Country} Covid-19 report <br /> ${pak.CountryCode} <br /> ${pak.Date} <br />
+		${pak.NewConfirmed} <br /> ${pak.NewDeaths} <br /> ${pak.NewRecovered} <br /> ${pak.TotalConfirmed} <br /> ${pak.TotalDeaths} <br />
+		${pak.TotalRecovered}`
+
+		document.getElementById('root').innerHTML = pakcoviddata;
+
+		console.log(apidata.Countries[76])
+		var ind = apidata.Countries[76]
+		var indcoviddata = `this is ${ind.Country} Covid-19 report <br /> ${ind.CountryCode} <br /> ${ind.Date} <br />
+		${ind.NewConfirmed} <br /> ${ind.NewDeaths} <br /> ${ind.NewRecovered} <br /> ${ind.TotalConfirmed} <br /> ${pak.TotalDeaths} <br />
+		${pak.TotalRecovered}`
+	
+		document.getElementById('root2').innerHTML = indcoviddata;
+	})
+	.catch((error) => {
+        console.log(error)
+	});
+
+
+
+fetch('https://jsonplaceholder.typicode.com/albums/1/photos')
+.then( (photo) => {
+     console.log(photo)
+	 return photo.json();
+}).then( (jsondata) => {
+     jsondata.map( (val) => {
+		 key = val.id;
+		 let img = document.createElement("img");
+		 img.src = `https://picsum.photos/200/300?random=${val.id}`;
+		 centerdiv.appendChild(img);
+		 console.log(val.url)
+	 })
+})
+
+</script>
+
+    
+	</body> 
+</html> 

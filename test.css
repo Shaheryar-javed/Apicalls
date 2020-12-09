@@ -1,0 +1,18 @@
+.choice {
+    /* border: 3px solid gray; */
+    margin: 2%;
+    width: 50%;
+    
+    box-shadow: 1px 1px 5px 3px rgb(75, 39, 39);
+    padding: 5px 5px;
+    max-width: 50%;
+    background-color: rgb(201, 209, 212);
+    opacity: .7;
+     
+}
+.main {
+    text-align: center;
+}
+#math {
+    margin-left: 30%;
+}
